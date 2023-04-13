@@ -1,0 +1,19 @@
+.table tr td img{
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: cover;
+}
+td i{
+    color: red;
+    cursor: pointer;
+}
+th,
+td{
+    color:var(--primary-color);
+}
+.btn__shopping{
+    background-color: var(--link-hover-color);
+}
+.btn__shopping i{
+    margin-right: 10px;
+}

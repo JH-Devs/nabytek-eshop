@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+/* google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+/*  css variables */
+:root {
+  --card-bg-01: #b8e994;
+  --card-bg-02: #f8c291;
+  --card-bg-03: #82ccdd;
+  --card-bg-04: #fad390;
+  --primary-color: #0c2461;
+  --hero-bg: #fad390;
+  --heading-fontSize: 2rem;
+  --small-text-color: #999;
+  --heading-text-color: #0c2461;
+  --link-hover-color: #f6b93b;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* reset browser default */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  color: var(--small-text-color);
+  font-size: 1rem;
+}
+
+h1,
+h2 {
+  font-size: var(--heading-fontSize);
+}
+
+ul {
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: var(--primary-color); 
+}
+
+img{
+  width: 100%;
+}
+
+section{
+  padding: 60px 0px;
+}
+.section__title{
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-decoration: underline;
+  text-decoration-color: var(--link-hover-color);
+}
+/* tablet */
+@media only screen and (max-width:992px){
+  .section__title{
+    font-size: 1.7rem;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* tablet */
+@media only screen and (max-width:768px){
+  .section{
+    padding: 40px 0px;
   }
-  to {
-    transform: rotate(360deg);
+  .section__title{
+    font-size: 1.5rem;
+  }
+}
+/* mobil */
+@media only screen and (max-width:576px){
+  .section{
+    padding: 30px 0px;
+  }
+  .section__title{
+    font-size: 1.3rem;
   }
 }

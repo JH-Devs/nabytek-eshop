@@ -1,0 +1,99 @@
+.product__item{
+    padding: 20px;
+    cursor: pointer;
+    height: 450px;
+}
+.product__item .product__img{
+    height: 250px;
+}
+.product__item .product__img img{
+    height: 250px;
+}
+
+.product__info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 15px;
+    text-align: center;
+}
+.product__info span{
+    font-size: 0.9rem;
+}
+.product__info .product__name a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+.product__info .product__name a:hover{
+    color: var(--link-hover-color);
+}
+.product__card-bottom .price{
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.product__card-bottom span i{
+    font-size: 1.5rem;
+    color: #78e08f;
+}
+/* tablet */
+@media only screen and (max-width:992px){
+    .product__item .product__img{
+        height:160px;
+    }
+    .product__item .product__img img{
+        height:150px;
+    }
+    .product__info h3{
+        font-size: 1.2rem;
+    }
+    .product__card-bottom .price{
+        font-size: 1.1rem;
+    }
+    .product__card-bottom span i{
+        font-size: 1.3rem;
+    }
+}
+/* tablet */
+@media only screen and (max-width:768px){
+    .product__item .product__img{
+        height: 150px;
+        width: 100%;
+        margin-left:70px ;
+    }
+    .product__item .product__img img{
+        height:150px;
+        width: 70%;
+    }
+    .product__info h3{
+        font-size: 1rem;
+    }
+    .product__card-bottom{
+        width: 70%;
+        margin-left: 70px;
+    }
+    .product__card-bottom .price{
+        font-size: 1rem;
+    }
+    .product__card-bottom span i{
+        font-size: 1.2rem;
+    }
+}
+/* mobil */
+@media only screen and (max-width:576px){
+    .product__item .product__img{
+        height: 250px;
+        
+    }
+    .product__item .product__img img{
+        height:250px;
+    }
+    .product__info h3{
+        font-size: 1rem;
+    }
+    .product__card-bottom .price{
+        font-size: 1rem;
+    }
+    .product__card-bottom span i{
+        font-size: 1.2rem;
+    }
+}

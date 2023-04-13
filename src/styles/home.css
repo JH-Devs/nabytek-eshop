@@ -1,0 +1,117 @@
+.hero__section{
+    background-color: var(--hero-bg);
+}
+.hero__content h2{
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 20px 0px;
+}
+.hero__content p{
+    line-height: 28px;
+}
+.hero__section p:nth-child(1){
+    font-weight: 600;
+}
+.buy__btn{
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 40px;
+}
+.buy__btn a{
+    text-decoration: none;
+    color: white;
+}
+.buy__btn a:hover{
+    color: var(--link-hover-color);
+}
+.hero__content{
+    padding-top: 45px;
+}
+.timer__count{
+    background: var(--primary-color);
+    height: 350px;
+}
+.timer__count img{
+    width: 70% !important;
+    height: 75% !important;
+    object-fit: contain;
+}
+.clock__top-content h3{
+    color: var(--link-hover-color);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+.store__btn{
+    background: var(--link-hover-color) !important;
+    font-weight: 500;
+}
+.store__btn a:hover{
+    color: var(--primary-color);
+}
+/* tablet */
+@media only screen and (max-width:992px){
+    .hero__content h2{
+        font-size: 2rem;
+    }
+    .clock__top-content h4{
+        font-size: 0.8rem;
+    }
+    .clock__top-content h3{
+        font-size: 1.8rem;
+    }
+    .store__btn{
+        font-size: 1rem;
+    }
+    .timer__count img{
+        width: 80% !important;
+        height: 85% !important;
+        object-fit: contain;
+    }
+
+}
+/* tablet */
+@media only screen and (max-width:768px){
+    .hero__content h2{
+        font-size: 1.6rem;
+    }
+    .hero__content p{
+        font-size: 0.9rem;
+    }
+    .buy__btn{
+        font-size: 0.9rem;
+    }
+}
+/* mobil */
+@media only screen and (max-width:576px){
+    .hero__content{
+        padding-top: 0;
+        margin-bottom: 40px;
+    }
+    .hero__content h2{
+        font-size: 1.3rem;
+    }
+    .clock__top-content h4{
+        font-size: 0.8rem;
+    }
+    .clock__top-content h3{
+        font-size: 1.5rem;
+    }
+    .store__btn{
+        font-size: 0.8rem;
+    }
+    .timer__count img{
+        width:70% !important;
+        height: 75% !important;
+        margin-top: -50px;
+        
+
+    }
+
+}
