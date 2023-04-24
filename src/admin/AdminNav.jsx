@@ -21,7 +21,7 @@ const admin__nav = [
     },
     {
         display:'Uživatelé',
-        path:'nastenka/uzivatele'
+        path:'/nastenka/uzivatele'
     },
     {
         display:'Objednávky',
@@ -56,7 +56,7 @@ const AdminNav = () => {
             </Container>
         </div>
     </header>
-    <section className="admin__menu">
+    <section className="admin__menu ">
         <Container>
             <Row>
              <div className="admin__navigation">
@@ -64,7 +64,7 @@ const AdminNav = () => {
                     {
                        admin__nav.map((item, index)=> (
                         <li className='admin__menu-item' key={index}>
-                        <NavLink to={item.path}>{item.display} </NavLink>
+                        <NavLink to={item.path}  className={(navClass) => navClass.isActive  ? 'nav__active' : ''}>{item.display} </NavLink>
                         </li>
                     ))
                     }

@@ -13,6 +13,8 @@ import ProtectedRoute from './ProtectedRoute'
 import Dashboard from '../admin/Dashboard'
 import AddProducts from '../admin/AddProducts'
 import AllProducts from '../admin/AllProducts'
+import Users from '../admin/Users'
+import Orders from '../admin/Orders'
 
 const Routers = () => {
   return (
@@ -28,6 +30,8 @@ const Routers = () => {
       <Route path='nastenka/vsechny-produkty' element={<AllProducts/>} />
       <Route path='nastenka/pridat-produkt' element={<AddProducts/>} />
       <Route path='nastenka' element={<Dashboard/>} />
+      <Route path='nastenka/uzivatele' element={<Users/>} />
+      <Route path='nastenka/objednavky' element={<Orders/>} />
       </Route>
     
       <Route path='prihlaseni' element={<Login/> } />

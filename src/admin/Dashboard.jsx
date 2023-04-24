@@ -1,8 +1,9 @@
 import React from 'react'
+import '../styles/admin/dashboard.css'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <section className='dashboard'>Dashboard</section>
   )
 }
 
