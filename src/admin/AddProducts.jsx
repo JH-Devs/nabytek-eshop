@@ -9,33 +9,52 @@ const AddProducts = () => {
   const [enterDescription, setEnterDescription] = useState('');
   const [enterCategory, setEnterCategory] = useState('');
   const [enterPrice, setEnterPrice] = useState('');
+  const [enterProductImg, setEnterProductImg] = useState(null);
+  const [enterProductImg2, setEnterProductImg2] = useState(null);
+  const [enterProductImg3, setEnterProductImg3] = useState(null);
+
+  const addProduct = async(e) => {
+    e.preventDefault()
+
+    const product = {
+      title: enterTitle,
+      shortDesc: enterShortDesc,
+      description: enterDescription,
+      category: enterCategory,
+      price: enterPrice,
+      imgUrl: enterProductImg,
+      imgUrl2: enterProductImg2,
+      imgUrl3: enterProductImg3
+    }
+    console.log(product)
+  }
   return (
     <section className='add__products'>
       <Container>
         <Row>
           <Col lg='12'>
           <h4 className='mb-5'>Přidat produkt</h4>
-          <Form>
+          <Form onSubmit={addProduct}>
             <FormGroup className="form__group">
               <span className='add__title '>Název produktu</span>
-              <input type="text" />
+              <input type="text" value={enterTitle} onChange={e => setEnterTitle(e.target.value)} required />
             </FormGroup>
             <FormGroup className="form__group">
               <span className='add__title'>Krátký popis</span>
-              <input type="text" />
+              <textarea type="text" value={enterShortDesc}  onChange={e => setEnterShortDesc(e.target.value)} />
             </FormGroup>
             <FormGroup className="form__group">
               <span className='add__title'>Podrobný popis</span>
-              <input type="text" />
+              <textarea type="text" value={enterDescription}  onChange={e => setEnterDescription(e.target.value)}/>
             </FormGroup>
             <div className='d-flex align-items-center justify-content-between gap-5'>
             <FormGroup className="form__group w-50">
               <span className='add__title'>Cena (Kč)</span>
-              <input type="number" />
+              <input type="number" value={enterPrice}  onChange={e => setEnterPrice(e.target.value)} required/>
             </FormGroup>
             <FormGroup className="form__group w-50">
               <span className='add__title'>Kategorie</span>
-              <select className='w-100 p-2'>
+              <select className='w-100 p-2' value={enterCategory}  onChange={e => setEnterCategory(e.target.value)}>
                 <option value="novinky">Novinky</option>
                 <option value="vyprodej">Výprodej</option>
                 <option value="stoly">Stoly</option>
@@ -47,18 +66,18 @@ const AddProducts = () => {
             <div>
             <FormGroup className="form__group">
               <span className='add__title'>Hlavní obrázek</span>
-              <input type="file" />
+              <input type="file"  onChange={e => setEnterProductImg(e.target.files[0])} required/>
             </FormGroup>
             <FormGroup className="form__group">
               <span className='add__title'>Druhý obrázek</span>
-              <input type="file" />
+              <input type="file"  onChange={e => setEnterProductImg2(e.target.files[0])} />
             </FormGroup>
             <FormGroup className="form__group">
               <span className='add__title'>Třetí obrázek</span>
-              <input type="file" />
+              <input type="file"  onChange={e => setEnterProductImg3(e.target.files[0])}/>
             </FormGroup>
             </div>
-            <motion.button whileTap={{scale: 1.2}} className='buy__btn'>Přidat produkt</motion.button>
+            <motion.button whileTap={{scale: 1.2}} className='buy__btn' type='submit'>Přidat produkt</motion.button>
           </Form>
           </Col>
         </Row>
