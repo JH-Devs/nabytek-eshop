@@ -2,6 +2,11 @@ import React, {useState} from 'react'
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap'
 import '../styles/admin/addProducts.css'
 import { motion } from 'framer-motion'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import {db, storage } from '../firebase.config'
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
+import { collection, addDoc } from 'firebase/firestore'
 
 const AddProducts = () => {
   const [enterTitle, setEnterTitle] = useState('');
@@ -10,30 +15,55 @@ const AddProducts = () => {
   const [enterCategory, setEnterCategory] = useState('');
   const [enterPrice, setEnterPrice] = useState('');
   const [enterProductImg, setEnterProductImg] = useState(null);
-  const [enterProductImg2, setEnterProductImg2] = useState(null);
-  const [enterProductImg3, setEnterProductImg3] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const addProduct = async(e) => {
-    e.preventDefault()
+    e.preventDefault();
+    setLoading(true);
 
-    const product = {
-      title: enterTitle,
-      shortDesc: enterShortDesc,
-      description: enterDescription,
-      category: enterCategory,
-      price: enterPrice,
-      imgUrl: enterProductImg,
-      imgUrl2: enterProductImg2,
-      imgUrl3: enterProductImg3
+    // přidání produktu do firebase
+    try {
+        const docRef = await collection(db, 'products')
+
+        const storageRef = ref(storage, `productImages/${Date.now() + enterProductImg.name}`)
+
+        const uploadTask = uploadBytesResumable(storageRef, enterProductImg)
+        uploadTask.on(() => {
+          toast.error('obrázek nebyl nahrán')
+        }, () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            await addDoc (docRef, {
+              title: enterTitle,
+              shortDesc: enterShortDesc,
+              description: enterDescription,
+              category: enterCategory,
+              price: enterPrice,
+              imgUrl: downloadURL,
+            } );
+          });
+        }
+        );
+        setLoading(false) 
+      toast.success('produkt byl přidán');
+      navigate('/nastenka/vsechny-produkty');
+      
+    } catch (err) {
+      setLoading(false)
+      toast.error('chyba! produkt nebyl přidán');
     }
-    console.log(product)
-  }
+    
+  };
   return (
     <section className='add__products'>
       <Container>
         <Row>
           <Col lg='12'>
-          <h4 className='mb-5'>Přidat produkt</h4>
+          {
+            loading ? <h4 className='py-4'>Načítání.....</h4> :
+            <>
+            <h4 className='mb-5'>Přidat produkt</h4>
           <Form onSubmit={addProduct}>
             <FormGroup className="form__group">
               <span className='add__title '>Název produktu</span>
@@ -68,17 +98,11 @@ const AddProducts = () => {
               <span className='add__title'>Hlavní obrázek</span>
               <input type="file"  onChange={e => setEnterProductImg(e.target.files[0])} required/>
             </FormGroup>
-            <FormGroup className="form__group">
-              <span className='add__title'>Druhý obrázek</span>
-              <input type="file"  onChange={e => setEnterProductImg2(e.target.files[0])} />
-            </FormGroup>
-            <FormGroup className="form__group">
-              <span className='add__title'>Třetí obrázek</span>
-              <input type="file"  onChange={e => setEnterProductImg3(e.target.files[0])}/>
-            </FormGroup>
             </div>
             <motion.button whileTap={{scale: 1.2}} className='buy__btn' type='submit'>Přidat produkt</motion.button>
           </Form>
+            </>
+          }
           </Col>
         </Row>
       </Container>

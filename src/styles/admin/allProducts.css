@@ -1,0 +1,23 @@
+.table__products{
+    line-height: 60px;
+}
+.table__products tr td img{
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover;
+ }
+ .action{
+    display: flex;
+    gap:10px;    
+ }
+ .ri-eye-fill{
+    color:gray;
+    cursor: pointer;
+}
+.ri-pencil-fill{
+    color:blue;
+    cursor: pointer;
+}
+.ri-delete-bin-6-fill{
+    cursor: pointer;
+}
