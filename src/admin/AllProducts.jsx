@@ -1,15 +1,25 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import '../styles/admin/allProducts.css'
-import productImg from '../assets/images/arm-chair-01.jpg'
-
-
+import { db } from '../firebase.config'
+import {doc, deleteDoc} from 'firebase/firestore'
+import useGetData from '../custom-hooks/useGetData'
+import { toast } from 'react-toastify'
 
 const AllProducts = () => {
+  const {data:productsData, loading} = useGetData('products');
+
+  const deleteProduct = async id => {
+    await deleteDoc(doc(db, 'products', id));
+    toast.success('produkt byl smazán')
+  };
+
+ 
   return (
   <section className='all__products'>
     <Container>
       <Row>
+      <Col lg='12'><h4 className='fw-bold'>Produkty</h4></Col>
         <Col lg='12'>
           <table className='table table__products'>
             <thead>
@@ -23,20 +33,22 @@ const AllProducts = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>v-001</td>
-                <td><img src={productImg} alt="" /></td>
-                <td>Arm chair židle</td>
-                <td>Židle</td>
-                <td>999 Kč</td>
-                <td>
-                  <div className='action'>
-                    <i className="ri-eye-fill"></i>
-                    <i className="ri-pencil-fill"></i>
-                    <i className="ri-delete-bin-6-fill"></i>
-                </div>
-                </td>
-              </tr>
+            { loading ? (
+              <h4 className='py-5 text-center fw-bold'>Načítání.....</h4>
+              ) : (
+                productsData.map(item => (
+                  <tr key={item.id}>
+                  <td>{item.code}</td>
+                  <td><img src={item.imgUrl} alt="" /></td>
+                  <td>{item.title}</td>
+                  <td>{item.category}</td>
+                  <td>{item.price} Kč</td>
+                  <td>
+                      <i className="ri-delete-bin-6-fill" onClick={() => {deleteProduct(item.id)}}></i>
+                  </td>
+                </tr>
+                ))
+                )}
             </tbody>
           </table>
         </Col>

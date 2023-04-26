@@ -72,3 +72,12 @@
 .admin__menu-list a:hover{
     color:var(--link-hover-color)
 }
+.logout{
+    color: white;
+    list-style: none;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    margin-left: 25%;
+    cursor: pointer;
+}

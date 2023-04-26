@@ -1,10 +1,10 @@
-import { current } from '@reduxjs/toolkit'
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import navImg from '../assets/images/logo.png'
 import useAuth from '../custom-hooks/useAuth'
 import '../styles/admin/admin-nav.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
+
 
 const admin__nav = [
     {
@@ -50,7 +50,7 @@ const AdminNav = () => {
                     <div className="admin__nav-top-right">
                         <span><i className='ri-notification-3-line'></i></span>
                         <span><i className='ri-settings-2-line'></i></span>
-                        <img src={currentUser.photoURL} alt="" />
+                        <img src={ currentUser && currentUser.photoURL} alt="" />
                     </div>
                 </div>
             </Container>
@@ -69,6 +69,7 @@ const AdminNav = () => {
                     ))
                     }
                 </ul>
+                <li className='logout' >Odhlásit se</li>
                </div>             
             </Row>
         </Container>

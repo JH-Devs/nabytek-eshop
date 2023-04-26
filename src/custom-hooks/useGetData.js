@@ -1,11 +1,23 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import {db} from '../firebase.config'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, onSnapshot } from 'firebase/firestore'
 
 const useGetData = (collectionName) => {
-  return (
-    <div>useGetData</div>
-  )
+  const [data, setData] = useState([]) ;  
+  const [loading, setLoading] = useState(true);
+  const collectionRef = collection(db, collectionName);
+
+  useEffect(() => {
+    const getData = async()=> {
+      /* načítání dat z firebase */
+      await onSnapshot(collectionRef, (snapshot) => {
+        setData(snapshot.docs.map(doc=> ({...doc.data(), id: doc.id})));
+        setLoading(false);
+      });
+    };
+    getData();
+  }, []);
+  return { data, loading };
 }
 
 export default useGetData

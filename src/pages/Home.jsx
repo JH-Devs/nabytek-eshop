@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Services from '../services/Services'
 import ProductList from '../components/UI/ProductList'
-import products from '../assets/data/products'
 import counterImg from '../assets/images/counter-timer-img.png'
 import Clock from '../components/UI/Clock'
+import useGetData from '../custom-hooks/useGetData'
 
 const Home = () => {
+  const {data: products, loading} = useGetData('products')
   const [trendingProducts, setTredingProducts] = useState([]);
   const [bestSales, setBestSales] = useState([]);
   const year = new Date().getFullYear();
@@ -31,7 +32,7 @@ const Home = () => {
     setBestSales(filteredBestSales);
     setNewArrivals(filteredNewArrivals);
     setPopularProducts(filteredPopularProducts);
-  }, []);
+  }, [products]);
 
   return (
    <Helmet title={''}>
@@ -59,7 +60,11 @@ const Home = () => {
           <Col lg='12'className='text-center'>
             <h2 className='section__title'>Trendy produkty</h2>
           </Col>
-          <ProductList data={trendingProducts}/>
+          {
+            loading ? <h4 className='text-center fw-bold'>Načítání.....</h4> :
+            <ProductList data={trendingProducts}/>
+          }
+         
          </Row>
       </Container>
     </section>
@@ -69,7 +74,11 @@ const Home = () => {
           <Col lg='12' className='text-center'>
             <h2 className='section__title'>Výprodejové ceny</h2>
           </Col>
-          <ProductList data={bestSales} />
+          {
+            loading ? <h4 className='text-center fw-bold'>Načítání.....</h4> :
+            <ProductList data={bestSales} />
+          }
+        
          </Row>
       </Container>
     </section>
@@ -96,7 +105,10 @@ const Home = () => {
           <Col lg='12' className='text-center '>
             <h2 className='section__title'>Novinky</h2>
           </Col>
-          <ProductList data={newArrivals} />
+          {
+            loading ? <h4 className='text-center fw-bold'>Načítání.....</h4> :
+            <ProductList data={newArrivals} />
+          }
         </Row>
       </Container>
     </section>
@@ -106,7 +118,10 @@ const Home = () => {
           <Col lg='12' className='text-center'>
             <h2 className="section__title">Populární v komodách</h2>
           </Col>
-          <ProductList data={popularProducts} />
+          {
+            loading ? <h4 className='text-center fw-bold'>Načítání.....</h4> :
+            <ProductList data={popularProducts} />
+          }
         </Row>
       </Container>
     </section>

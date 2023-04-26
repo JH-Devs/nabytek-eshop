@@ -1,13 +1,14 @@
-.all__products h4{
+.all__users h4{
     color:var(--primary-color);
 }
-.table__products{
+.table__users{
     line-height: 60px;
 }
-.table__products tr td img{
+.table__users tr td img{
     width: 60px !important;
     height: 60px !important;
     object-fit: cover;
+    border-radius: 50%;
  }
 .ri-delete-bin-6-fill{
     cursor: pointer;

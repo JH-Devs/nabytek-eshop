@@ -1,7 +1,64 @@
 .dashboard,
 .all__products,
 .add__products,
-.users,
+.all__users,
 .orders{
     margin-left:350px;
+}
+.revenue__box,
+.orders__box,
+.products__box,
+.users__box{
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 50px;
+    text-align: center;
+}
+.revenue__box{
+    background-color: var(--card-bg-01);
+}
+.revenue__box h5{
+    color: white;
+    font-size: 18px;
+}
+.revenue__box span{
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 25px;
+}
+.orders__box{
+    background-color: var(--card-bg-02);
+}
+.orders__box h5{
+    color: white;
+    font-size: 18px;
+}
+.orders__box span{
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 25px;
+}
+.products__box{
+    background-color: var(--card-bg-03);
+}
+.products__box h5{
+    color: white;
+    font-size: 18px;
+}
+.products__box span{
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 25px;
+}
+.users__box{
+    background-color: var(--card-bg-04);
+}
+.users__box h5{
+    color: white;
+    font-size: 18px;
+}
+.users__box span{
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 25px;
 }

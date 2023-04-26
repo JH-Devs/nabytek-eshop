@@ -10,6 +10,7 @@ import { collection, addDoc } from 'firebase/firestore'
 
 const AddProducts = () => {
   const [enterTitle, setEnterTitle] = useState('');
+  const [enterCode, setEnterCode] = useState('');
   const [enterShortDesc, setEnterShortDesc] = useState('');
   const [enterDescription, setEnterDescription] = useState('');
   const [enterCategory, setEnterCategory] = useState('');
@@ -36,6 +37,7 @@ const AddProducts = () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await addDoc (docRef, {
               title: enterTitle,
+              code: enterCode,
               shortDesc: enterShortDesc,
               description: enterDescription,
               category: enterCategory,
@@ -70,12 +72,16 @@ const AddProducts = () => {
               <input type="text" value={enterTitle} onChange={e => setEnterTitle(e.target.value)} required />
             </FormGroup>
             <FormGroup className="form__group">
+              <span className='add__title '>Kód produktu</span>
+              <input type="text" value={enterCode} onChange={e => setEnterCode(e.target.value)} required />
+            </FormGroup>
+            <FormGroup className="form__group">
               <span className='add__title'>Krátký popis</span>
               <textarea type="text" value={enterShortDesc}  onChange={e => setEnterShortDesc(e.target.value)} />
             </FormGroup>
             <FormGroup className="form__group">
               <span className='add__title'>Podrobný popis</span>
-              <textarea type="text" value={enterDescription}  onChange={e => setEnterDescription(e.target.value)}/>
+              <textarea rows={5} type="text" value={enterDescription}  onChange={e => setEnterDescription(e.target.value)}/>
             </FormGroup>
             <div className='d-flex align-items-center justify-content-between gap-5'>
             <FormGroup className="form__group w-50">
@@ -85,11 +91,12 @@ const AddProducts = () => {
             <FormGroup className="form__group w-50">
               <span className='add__title'>Kategorie</span>
               <select className='w-100 p-2' value={enterCategory}  onChange={e => setEnterCategory(e.target.value)}>
-                <option value="novinky">Novinky</option>
-                <option value="vyprodej">Výprodej</option>
-                <option value="stoly">Stoly</option>
-                <option value="skrine">Skříně</option>
-                <option value="komody">Komody</option>
+                <option value="Novinky">Novinky</option>
+                <option value="Výprodej">Výprodej</option>
+                <option value="Populární">Populární</option>
+                <option value="Stoly">Stoly</option>
+                <option value="Skříně">Skříně</option>
+                <option value="Komody">Komody</option>
               </select>
             </FormGroup>
             </div>
