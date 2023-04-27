@@ -40,7 +40,7 @@ const AllProducts = () => {
                   <tr key={item.id}>
                   <td>{item.code}</td>
                   <td><img src={item.imgUrl} alt="" /></td>
-                  <td>{item.title}</td>
+                  <td>{item.productName}</td>
                   <td>{item.category}</td>
                   <td>{item.price} Kč</td>
                   <td>

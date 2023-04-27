@@ -3,10 +3,11 @@ import CommonSection from '../components/UI/CommonSection'
 import Helmet from '../components/helmet/Helmet'
 import { Container, Row, Col } from 'reactstrap'
 import '../styles/shop.css'
-import products from '../assets/data/products'
 import ProductList from '../components/UI/ProductList'
+import useGetData from '../custom-hooks/useGetData'
 
 const Shop = () => {
+  const {data: products, loading} = useGetData('products')
 
   const [productsData, setProductsData] = useState(products);
   const handleFilter = (e) =>{
@@ -88,9 +89,15 @@ const Shop = () => {
       <section className='pt-0'>
         <Container>
           <Row>
-            {
+         { /*  {
               productsData.length === 0 ? <h1 className='text-center fs-4 no-products'>žádné produkty ....</h1>
               : <ProductList data={productsData}/>
+            } */}
+               {
+            loading ? 
+             <h4 className='text-center fw-bold'>Načítání.....</h4> 
+             : 
+            <ProductList data={productsData} />
             }
           </Row>
         </Container>
